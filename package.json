@@ -1,0 +1,32 @@
+{
+  "name": "scraper-jurisprudencia-funcional",
+  "version": "1.0.0",
+  "description": "Scraper funcional de alta resiliencia para portales gubernamentales con JSF",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "test": "vitest run",
+    "test:local": "cross-env NODE_ENV=test ts-node src/index.ts"
+  },
+  "keywords": [
+    "scraper",
+    "functional",
+    "typescript",
+    "cheerio",
+    "jsf",
+    "primefaces"
+  ],
+  "author": "Ricardo Hidalgo",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.18.1",
+    "cheerio": "^1.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "cross-env": "^7.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2",
+    "vitest": "^4.1.9"
+  }
+}

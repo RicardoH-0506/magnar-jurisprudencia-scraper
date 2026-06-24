@@ -1,0 +1,10 @@
+node_modules/
+dist/
+downloads/
+oefa.json
+jurisprudencia.json
+fallidos.json
+.DS_Store
+.env
+.gemini/
+antigravity-ide/

@@ -43,8 +43,17 @@ export function parseOefaListPage(content: string, isXml: boolean = false): Oefa
     html = updateMatch[2];
   }
 
+  // Si el HTML parcial contiene filas tr pero no la etiqueta table, las envolvemos
+  // para evitar que el parser de Cheerio las descarte por ser etiquetas huérfanas inválidas.
+  if (!html.includes("<table") && html.includes("<tr")) {
+    html = `<table><tbody>${html}</tbody></table>`;
+  }
+
   const $ = cheerio.load(html);
-  const rows = $('tbody[id="listarDetalleInfraccionRAAForm:dt_data"] tr, tbody[id*="dt_data"] tr');
+  let rows = $('tbody[id="listarDetalleInfraccionRAAForm:dt_data"] tr, tbody[id*="dt_data"] tr');
+  if (rows.length === 0) {
+    rows = $('tr');
+  }
   
   const documents: OefaDocumento[] = [];
   

@@ -1,9 +1,3 @@
-Aquí tienes el **Project Specification definitivo, unificado y blindado al 100%**. He integrado los tips, recomendaciones de buenas prácticas y la sección de control estricto de Robustez para el manejo de *edge cases*.
-
-Con este documento, el equipo técnico de **Antigravity** tendrá un plano de ingeniería de nivel Senior para levantar el desarrollo de inmediato.
-
----
-
 # 📑 Project Specification: High-Resilience Functional Scraper
 
 ## 1. Objetivo General

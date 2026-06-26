@@ -1,5 +1,6 @@
 import * as readline from "readline";
 import { runScrapers } from "./orchestrator";
+import { MENU_ACTIONS, CMD_MODES } from "../config/constants";
 
 // Helper para hacer preguntas en la terminal de forma interactiva
 function askQuestion(query: string): Promise<string> {
@@ -34,22 +35,7 @@ Si no se especifica ninguna opción de modo por consola, se levantará un menú 
 `);
 }
 
-interface MenuAction {
-  runPj: boolean;
-  runOefa: boolean;
-  pjSandbox: boolean;
-  oefaSandbox: boolean;
-  autoRun?: boolean;
-}
 
-const MENU_ACTIONS: Record<string, MenuAction> = {
-  "1": { runPj: true, runOefa: false, pjSandbox: true, oefaSandbox: false },
-  "2": { runPj: true, runOefa: false, pjSandbox: false, oefaSandbox: false },
-  "3": { runPj: false, runOefa: true, pjSandbox: false, oefaSandbox: true },
-  "4": { runPj: false, runOefa: true, pjSandbox: false, oefaSandbox: false },
-  "5": { runPj: true, runOefa: true, pjSandbox: true, oefaSandbox: true, autoRun: true },
-  "6": { runPj: true, runOefa: true, pjSandbox: false, oefaSandbox: false, autoRun: true },
-};
 
 async function interactiveMenu() {
   console.log(`
@@ -108,21 +94,7 @@ Selecciona una opción para ejecutar:
   await runScrapers({ runPj, runOefa, pjSandbox, oefaSandbox, pages, docs });
 }
 
-interface CmdModeConfig {
-  runPj: boolean;
-  runOefa: boolean;
-  pjSandbox: boolean;
-  oefaSandbox: boolean;
-}
 
-const CMD_MODES: Record<string, CmdModeConfig> = {
-  "--pj-sandbox": { runPj: true, runOefa: false, pjSandbox: true, oefaSandbox: false },
-  "--pj-live": { runPj: true, runOefa: false, pjSandbox: false, oefaSandbox: false },
-  "--oefa-sandbox": { runPj: false, runOefa: true, pjSandbox: false, oefaSandbox: true },
-  "--oefa-live": { runPj: false, runOefa: true, pjSandbox: false, oefaSandbox: false },
-  "--all-test": { runPj: true, runOefa: true, pjSandbox: true, oefaSandbox: true },
-  "--all-prod": { runPj: true, runOefa: true, pjSandbox: false, oefaSandbox: false },
-};
 
 /**
  * Función principal para iniciar la interfaz de línea de comandos (CLI) o el menú interactivo.

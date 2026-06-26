@@ -18,3 +18,19 @@ export interface ScraperOptions {
   pages?: number;
   docs?: number;
 }
+
+export interface MenuAction {
+  runPj: boolean;
+  runOefa: boolean;
+  pjSandbox: boolean;
+  oefaSandbox: boolean;
+  autoRun?: boolean;
+}
+
+export interface CmdModeConfig {
+  runPj: boolean;
+  runOefa: boolean;
+  pjSandbox: boolean;
+  oefaSandbox: boolean;
+}
+
